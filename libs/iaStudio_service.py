@@ -13,7 +13,8 @@ STATUS = {
 
 FILE_TYPES = {
     "mp3": "audio/mpeg",
-    "txt": "text/plain"
+    "txt": "text/plain",
+    "pdf": "application/pdf"
 }
 
 class IAStudio:
@@ -42,7 +43,7 @@ class IAStudio:
         file_name = file_path.split("/")[-1]
         file_extension = file_name.split(".")[-1]
         if file_extension not in FILE_TYPES:
-            raise Exception("Invalid file extension. Supported extensions: mp3 for VOICE tasks, txt for TEXT tasks.")
+            raise Exception("Invalid file extension. Supported extensions: mp3 for VOICE tasks, txt and pdf for TEXT tasks.")
 
         url = self.url + f"api/tasks/run/{task_id}"
         headers = {'Authorization': f"Bearer {self.api_key}"}

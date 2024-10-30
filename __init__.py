@@ -88,6 +88,19 @@ try:
             PrintException()
             raise e
         
+    if module == "get_results":
+        task_id = GetParams("task_id")
+        result = GetParams("result")
+
+        try:
+            res = mod_iaStudio.get_results(task_id)
+            SetVar(result, res)
+
+        except Exception as e:
+            SetVar(result, False)
+            PrintException()
+            raise e
+        
 except Exception as e:
     import traceback
     traceback.print_exc()

@@ -1,6 +1,6 @@
-# IAStudio
+# AiStudio
   
-Módulo para trabajar con la API de IA Studio  
+Módulo para trabajar con la API de Ai Studio Rocketbot  
 
 *Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
@@ -15,13 +15,16 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 
 
 1. Iniciar Sesión  
-Inicia sesión en IA Studio
+Inicia sesión en Ai Studio
 
 2. Obtener tasks  
 Obtiene las tasks del usuario
 
 3. Ejecutar task  
-Ejecuta una task del usuario  
+Ejecuta una task del usuario
+
+4. Obtener resultados  
+Obtiene los resultados de una task por ID  
 
 
 

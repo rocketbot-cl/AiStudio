@@ -1,9 +1,10 @@
-# IAStudio
+# AiStudio
   
-Módulo para trabajar con la API de IA Studio  
+Módulo para trabajar con la API de Ai Studio Rocketbot  
 
 
   
+![banner](imgs/Banner_AiStudio.png)
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -15,11 +16,11 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 
 ### Iniciar Sesión
   
-Inicia sesión en IA Studio
+Inicia sesión en Ai Studio
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|API Key|API Key generada en IA Studio.|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ey...|
-|Servidor|Servidor de IA Studio a utilizar.|PROD|
+|API Key|API Key generada en Ai Studio.|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ey...|
+|Servidor|Servidor de Ai Studio a utilizar.|PROD|
 |Asignar resultado a variable|Variable donde se almacenará el resultado.|Variable|
 
 ### Obtener tasks
@@ -37,4 +38,12 @@ Ejecuta una task del usuario
 |Task ID|ID de la task a ejecutar.|d0877abb7789b897e0b0|
 |Modo de ejecución|Modo de ejecución de la task. Wait for response espera a que la task termine y devuelve el resultado. Run in background ejecuta la task en segundo plano y no espera a que termine.|WAIT|
 |Archivo de entrada|Archivo que se enviará a la task. Requerido en caso de que la task lo necesite.|Archivo|
+|Asignar resultado a variable|Variable donde se almacenará el resultado.|Variable|
+
+### Obtener resultados
+  
+Obtiene los resultados de una task por ID
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Task ID|ID de la task a obtener resultados.|d0877abb7789b897e0b0|
 |Asignar resultado a variable|Variable donde se almacenará el resultado.|Variable|

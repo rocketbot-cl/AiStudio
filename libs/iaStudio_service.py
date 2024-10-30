@@ -3,7 +3,7 @@ import ia_requests as requests
 SERVERS = {
     "PROD": "https://api-emailgpt.rocketbot.com/",
     "QA": "https://qa-api-emailgpt.myrb.io/",
-    "DEV": "https://dev-api-emailgpt.myrb.io/"
+    "DEV": "http://localhost:3001/"
 }
 
 STATUS = {
@@ -60,3 +60,9 @@ class IAStudio:
         response = requests.get(url, headers=headers)
         if response.json().get('error'):
             raise Exception(response.json().get('error'))
+        
+    def get_results(self, task_id):
+        url = self.url + f"api/tasks/results/{task_id}"
+        headers = {'Authorization': f"Bearer {self.api_key}"}
+        response = requests.get(url, headers=headers)
+        return response.json()

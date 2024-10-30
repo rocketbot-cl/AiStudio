@@ -28,7 +28,7 @@ import os
 import sys
 
 base_path = tmp_global_obj["basepath"] # type:ignore
-cur_path = base_path + 'modules' + os.sep + 'IAStudio' + os.sep + 'libs' + os.sep
+cur_path = base_path + 'modules' + os.sep + 'AiStudio' + os.sep + 'libs' + os.sep
 GetParams = GetParams # type:ignore
 SetVar = SetVar # type:ignore
 PrintException = PrintException # type:ignore

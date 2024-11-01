@@ -37,6 +37,8 @@ Executa uma task do usuário
 | --- | --- | --- |
 |Task ID|ID da task a ser executada.|d0877abb7789b897e0b0|
 |Modo de execução|Modo de execução da task. Wait for response espera a task terminar e retorna o resultado. Run in background executa a task em segundo plano e não espera terminar.|WAIT|
+|Data de início (EMAIL task)|Data de início a partir da qual os e-mails serão pesquisados. Obrigatório no caso de a task ser do tipo EMAIL.|30/10/2021|
+|Data de fim (EMAIL task)|Data de fim até a qual os e-mails serão pesquisados. Obrigatório no caso de a task ser do tipo EMAIL.|30/10/2021|
 |Arquivo de entrada|Arquivo que será enviado à task. Necessário caso a task precise.|Arquivo|
 |Atribuir resultado à variável|Variável onde o resultado será armazenado.|Variável|
 

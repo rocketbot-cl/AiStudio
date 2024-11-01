@@ -37,6 +37,8 @@ Runs a task of the user
 | --- | --- | --- |
 |Task ID|ID of the task to run.|d0877abb7789b897e0b0|
 |Execution mode|Execution mode of the task. Wait for response waits for the task to finish and returns the result. Run in background runs the task in the background and does not wait for it to finish.|WAIT|
+|Start date (EMAIL task)|Start date from which the emails will be searched. Mandatory in case the task is of type EMAIL.|30/10/2021|
+|End date (EMAIL task)|End date until which the emails will be searched. Mandatory in case the task is of type EMAIL.|30/10/2021|
 |Input file|File that will be sent to the task. Required in case the task needs it.|File|
 |Assign result to variable|Variable where the result will be stored.|Variable|
 

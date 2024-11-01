@@ -2,7 +2,7 @@
   
 Módulo para trabajar con la API de Ai Studio Rocketbot  
 
-
+*Read this in other languages: [English](Manual_AiStudio.md), [Português](Manual_AiStudio.pr.md), [Español](Manual_AiStudio.es.md)*
   
 ![banner](imgs/Banner_AiStudio.png)
 ## Como instalar este módulo
@@ -37,6 +37,8 @@ Ejecuta una task del usuario
 | --- | --- | --- |
 |Task ID|ID de la task a ejecutar.|d0877abb7789b897e0b0|
 |Modo de ejecución|Modo de ejecución de la task. Wait for response espera a que la task termine y devuelve el resultado. Run in background ejecuta la task en segundo plano y no espera a que termine.|WAIT|
+|Fecha de inicio (EMAIL task)|Fecha de inicio desde la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.|30/10/2021|
+|Fecha de fin (EMAIL task)|Fecha de fin hasta la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.|30/10/2021|
 |Archivo de entrada|Archivo que se enviará a la task. Requerido en caso de que la task lo necesite.|Archivo|
 |Asignar resultado a variable|Variable donde se almacenará el resultado.|Variable|
 

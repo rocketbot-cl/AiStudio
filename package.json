@@ -7,7 +7,7 @@
         "pr": "Módulo para trabalhar com a API do Ai Studio Rocketbot"
     },
     "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "license": "MIT",
     "homepage": "http://rocketbot.com/",
     "linux": true,
@@ -283,6 +283,58 @@
                         "required": true
                     },
                     {
+                        "type": "input",
+                        "placeholder": {
+                            "es": "30/10/2021",
+                            "en": "30/10/2021",
+                            "pr": "30/10/2021"
+                        },
+                        "title": {
+                            "es": "Fecha de inicio (EMAIL task):",
+                            "en": "Start date (EMAIL task):",
+                            "pr": "Data de início (EMAIL task):"
+                        },
+                        "description": {
+                            "es": "Fecha de inicio desde la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.",
+                            "en": "Start date from which the emails will be searched. Mandatory in case the task is of type EMAIL.",
+                            "pr": "Data de início a partir da qual os e-mails serão pesquisados. Obrigatório no caso de a task ser do tipo EMAIL."
+                        },
+                        "help": {
+                            "es": "Formato: dd/mm/yyyy. Se buscarán y procesarán los correos DESDE esta fecha.",
+                            "en": "Format: dd/mm/yyyy. Emails will be searched and processed FROM this date.",
+                            "pr": "Formato: dd/mm/yyyy. E-mails serão pesquisados e processados A PARTIR desta data."
+                        },
+                        "id": "start_date",
+                        "css": "col-md-6",
+                        "required": true
+                    },
+                    {
+                        "type": "input",
+                        "placeholder": {
+                            "es": "30/10/2021",
+                            "en": "30/10/2021",
+                            "pr": "30/10/2021"
+                        },
+                        "title": {
+                            "es": "Fecha de fin (EMAIL task):",
+                            "en": "End date (EMAIL task):",
+                            "pr": "Data de fim (EMAIL task):"
+                        },
+                        "description": {
+                            "es": "Fecha de fin hasta la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.",
+                            "en": "End date until which the emails will be searched. Mandatory in case the task is of type EMAIL.",
+                            "pr": "Data de fim até a qual os e-mails serão pesquisados. Obrigatório no caso de a task ser do tipo EMAIL."
+                        },
+                        "help": {
+                            "es": "Formato: dd/mm/yyyy. Se buscarán y procesarán los correos HASTA esta fecha.",
+                            "en": "Format: dd/mm/yyyy. Emails will be searched and processed UNTIL this date.",
+                            "pr": "Formato: dd/mm/yyyy. E-mails serão pesquisados e processados ATÉ esta data."
+                        },
+                        "id": "end_date",
+                        "css": "col-md-6",
+                        "required": true
+                    },
+                    {
                         "type": "file_select",
                         "placeholder": {
                             "es": "Archivo",
@@ -298,6 +350,11 @@
                             "es": "Archivo que se enviará a la task. Requerido en caso de que la task lo necesite.",
                             "en": "File that will be sent to the task. Required in case the task needs it.",
                             "pr": "Arquivo que será enviado à task. Necessário caso a task precise."
+                        },
+                        "help": {
+                            "es": "Archivo que se enviará a la task. Requerido si el tipo de task es VOICE o TEXT.",
+                            "en": "File that will be sent to the task. Required if the task type is VOICE or TEXT.",
+                            "pr": "Arquivo que será enviado à task. Necessário se o tipo de task for VOICE ou TEXT."
                         },
                         "id": "file",
                         "css": "col-md-6",
@@ -342,10 +399,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows": true,
             "mac": true,
-            "docker": false
+            "docker": true
         },
         {
             "en": {

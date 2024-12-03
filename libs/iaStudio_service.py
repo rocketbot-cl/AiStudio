@@ -1,4 +1,5 @@
 import ia_requests as requests
+from datetime import datetime
 
 SERVERS = {
     "PROD": "https://api-emailgpt.rocketbot.com/",
@@ -13,6 +14,8 @@ STATUS = {
 
 FILE_TYPES = {
     "mp3": "audio/mpeg",
+    "wav": "audio/wav",
+    "ogg": "audio/ogg",
     "txt": "text/plain",
     "pdf": "application/pdf"
 }
@@ -39,18 +42,31 @@ class IAStudio:
                 })
         return tasks_list
     
-    def run_task(self, task_id, mode, file_path):
-        file_name = file_path.split("/")[-1]
-        file_extension = file_name.split(".")[-1]
-        if file_extension not in FILE_TYPES:
-            raise Exception("Invalid file extension. Supported extensions: mp3 for VOICE tasks, txt and pdf for TEXT tasks.")
+    def run_task(self, task_id, mode, file_path=None, range_=None):
+        if file_path:
+            file_name = file_path.split("/")[-1]
+            file_extension = file_name.split(".")[-1]
+            if file_extension not in FILE_TYPES:
+                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks.")
+            files=[
+                ('file', (file_name, open(file_path, 'rb'), FILE_TYPES[file_extension]))
+            ]
+        else:
+            files = None
+
+        data = {'runMode': mode}
+        if range_:
+            try:
+                after_date = datetime.strptime(range_[0], "%d/%m/%Y").strftime("%Y-%m-%d")
+                before_date = datetime.strptime(range_[1], "%d/%m/%Y").strftime("%Y-%m-%d")
+                data['afterDate'] = after_date
+                data['beforeDate'] = before_date
+            except ValueError:
+                raise Exception("Invalid date format. Use dd/mm/yyyy")
 
         url = self.url + f"api/tasks/run/{task_id}"
         headers = {'Authorization': f"Bearer {self.api_key}"}
-        data = {'runMode': mode}
-        files=[
-            ('file', (file_name, open(file_path, 'rb'), FILE_TYPES[file_extension]))
-        ]
+        
         response = requests.post(url, headers=headers, data=data, files=files)
         return response.json()
     
@@ -60,3 +76,13 @@ class IAStudio:
         response = requests.get(url, headers=headers)
         if response.json().get('error'):
             raise Exception(response.json().get('error'))
+        
+    def get_results(self, task_id):
+        url = self.url + f"api/tasks/results/{task_id}"
+        headers = {'Authorization': f"Bearer {self.api_key}"}
+
+        response = requests.get(url, headers=headers)
+        response_data = response.json()
+
+        results = [item['result'] for item in response_data.get('data', [])]
+        return results

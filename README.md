@@ -1,6 +1,6 @@
-# IAStudio
+# AiStudio
   
-Module to work with IA Studio API  
+Module to work with the Ai Studio API  
 
 *Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
@@ -15,13 +15,16 @@ To install the module in Rocketbot Studio, it can be done in two ways:
 
 
 1. Login  
-Login to IA Studio
+Login to Ai Studio
 
 2. Get tasks  
 Obtains the tasks of the user
 
 3. Run task  
-Runs a task of the user  
+Runs a task of the user
+
+4. Get results  
+Get the results of a task by ID  
 
 
 

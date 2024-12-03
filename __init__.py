@@ -28,7 +28,7 @@ import os
 import sys
 
 base_path = tmp_global_obj["basepath"] # type:ignore
-cur_path = base_path + 'modules' + os.sep + 'IAStudio' + os.sep + 'libs' + os.sep
+cur_path = base_path + 'modules' + os.sep + 'AiStudio' + os.sep + 'libs' + os.sep
 GetParams = GetParams # type:ignore
 SetVar = SetVar # type:ignore
 PrintException = PrintException # type:ignore
@@ -58,35 +58,58 @@ try:
             SetVar(result, False)
             PrintException()
             raise e
+    try:
+        if module == "get_tasks":
+            result = GetParams("result")
 
-    if module == "get_tasks":
-        result = GetParams("result")
+            try:
+                res = mod_iaStudio.get_tasks()
+                SetVar(result, res)
 
-        try:
-            res = mod_iaStudio.get_tasks()
-            SetVar(result, res)
+            except Exception as e:
+                SetVar(result, False)
+                PrintException()
+                raise e
+            
+        if module == "run_task":
+            task_id = GetParams("task_id")
+            mode = GetParams("mode")
+            file = GetParams("file")
+            start_date = GetParams("start_date")
+            end_date = GetParams("end_date")
+            result = GetParams("result")
 
-        except Exception as e:
-            SetVar(result, False)
-            PrintException()
-            raise e
-        
-    if module == "run_task":
-        task_id = GetParams("task_id")
-        mode = GetParams("mode")
-        file = GetParams("file")
-        result = GetParams("result")
+            try:
+                range_ = None
+                if start_date and end_date:
+                    range_ = [start_date, end_date]
+                
+                res = mod_iaStudio.run_task(task_id, mode, file, range_)
+                if res.get('status') == False:
+                    if 'You need to provide afterDate and beforeDate' in res.get('message'):
+                        raise Exception("To run this task you must specify the start and end range date.")
+                    raise Exception(res.get('message'))
+                SetVar(result, res)
 
-        try:
-            res = mod_iaStudio.run_task(task_id, mode, file)
-            if res.get('status') == False:
-                raise Exception(res.get('message'))
-            SetVar(result, res)
+            except Exception as e:
+                SetVar(result, False)
+                PrintException()
+                raise e
+            
+        if module == "get_results":
+            task_id = GetParams("task_id")
+            result = GetParams("result")
 
-        except Exception as e:
-            SetVar(result, False)
-            PrintException()
-            raise e
+            try:
+                res = mod_iaStudio.get_results(task_id)
+                SetVar(result, res)
+
+            except Exception as e:
+                SetVar(result, False)
+                PrintException()
+                raise e
+    except NameError as e:
+        raise Exception("You must login first.")
         
 except Exception as e:
     import traceback

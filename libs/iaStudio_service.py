@@ -17,7 +17,15 @@ FILE_TYPES = {
     "wav": "audio/wav",
     "ogg": "audio/ogg",
     "txt": "text/plain",
-    "pdf": "application/pdf"
+    "pdf": "application/pdf",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "png": "image/png",
+}
+
+STATUS = {
+    1: "running",
+    2: "paused"
 }
 
 class IAStudio:
@@ -47,7 +55,7 @@ class IAStudio:
             file_name = file_path.split("/")[-1]
             file_extension = file_name.split(".")[-1]
             if file_extension not in FILE_TYPES:
-                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks.")
+                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
             files=[
                 ('file', (file_name, open(file_path, 'rb'), FILE_TYPES[file_extension]))
             ]

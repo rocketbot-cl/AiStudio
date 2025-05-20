@@ -53,7 +53,7 @@ class IAStudio:
     def run_task(self, task_id, mode, file_path=None, range_=None):
         if file_path:
             file_name = file_path.split("/")[-1]
-            file_extension = file_name.split(".")[-1]
+            file_extension = file_name.split(".")[-1].lower()
             if file_extension not in FILE_TYPES:
                 raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
             files=[

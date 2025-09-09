@@ -1,3 +1,7 @@
+
+
+
+
 # AiStudio
   
 Módulo para trabajar con la API de Ai Studio Rocketbot  
@@ -39,6 +43,7 @@ Ejecuta una task del usuario
 |Modo de ejecución|Modo de ejecución de la task. Wait for response espera a que la task termine y devuelve el resultado. Run in background ejecuta la task en segundo plano y no espera a que termine.|WAIT|
 |Fecha de inicio (EMAIL task)|Fecha de inicio desde la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.|30/10/2021|
 |Fecha de fin (EMAIL task)|Fecha de fin hasta la cual se buscarán los correos electrónicos. Obligatorio en caso de que la task sea de tipo EMAIL.|30/10/2021|
+|Texto (tareas tipo text)|Texto a enviar para procesamiento AiStudio.|Lorem ipsum dolor sit amet consectetur adipiscing elit lacinia varius, facilisi venenatis ornare mattis eget nisl curae integer montes molestie, lectus felis ultricies tempor neque mauris nam aptent.|
 |Archivo de entrada|Archivo que se enviará a la task. Requerido en caso de que la task lo necesite.|Archivo|
 |Asignar resultado a variable|Variable donde se almacenará el resultado.|Variable|
 

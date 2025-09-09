@@ -16,6 +16,7 @@ FILE_TYPES = {
     "mp3": "audio/mpeg",
     "wav": "audio/wav",
     "ogg": "audio/ogg",
+    "oga": "audio/oga",
     "txt": "text/plain",
     "pdf": "application/pdf",
     "jpg": "image/jpeg",
@@ -50,12 +51,12 @@ class IAStudio:
                 })
         return tasks_list
     
-    def run_task(self, task_id, mode, file_path=None, range_=None):
+    def run_task(self, task_id, mode, file_path=None, range_=None, text=None):
         if file_path:
             file_name = file_path.split("/")[-1]
             file_extension = file_name.split(".")[-1].lower()
             if file_extension not in FILE_TYPES:
-                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
+                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg, oga for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
             files=[
                 ('file', (file_name, open(file_path, 'rb'), FILE_TYPES[file_extension]))
             ]
@@ -71,7 +72,8 @@ class IAStudio:
                 data['beforeDate'] = before_date
             except ValueError:
                 raise Exception("Invalid date format. Use dd/mm/yyyy")
-
+        if text:
+            data['text'] = text
         url = self.url + f"api/tasks/run/{task_id}"
         headers = {'Authorization': f"Bearer {self.api_key}"}
         

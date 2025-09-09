@@ -7,7 +7,7 @@
         "pr": "Módulo para trabalhar com a API do Ai Studio Rocketbot"
     },
     "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "license": "MIT",
     "homepage": "http://rocketbot.com/",
     "linux": true,
@@ -331,6 +331,32 @@
                         "required": true
                     },
                     {
+                        "type": "textarea",
+                        "placeholder": {
+                            "es": "Lorem ipsum dolor sit amet consectetur adipiscing elit lacinia varius, facilisi venenatis ornare mattis eget nisl curae integer montes molestie, lectus felis ultricies tempor neque mauris nam aptent.",
+                            "en": "Lorem ipsum dolor sit amet consectetur adipiscing elit lacinia varius, facilisi venenatis ornare mattis eget nisl curae integer montes molestie, lectus felis ultricies tempor neque mauris nam aptent.",
+                            "pr": "Lorem ipsum dolor sit amet consectetur adipiscing elit lacinia varius, facilisi venenatis ornare mattis eget nisl curae integer montes molestie, lectus felis ultricies tempor neque mauris nam aptent."
+                        },
+                        "title": {
+                            "es": "Texto (tareas tipo text):",
+                            "en": "Text (text type tasks):",
+                            "pr": "Texto (tarefas do tipo texto):"
+                        },
+                        "description": {
+                            "es": "Texto a enviar para procesamiento AiStudio.",
+                            "en": "Text to be sent for AiStudio processing.",
+                            "pr": "Texto a ser enviado para processamento no AiStudio."
+                        },
+                        "help": {
+                            "es": "Solo se permite enviar archivo o texto, no ambos.",
+                            "en": "Only file or text is allowed to be sent, not both.",
+                            "pr": "Somente arquivo ou texto podem ser enviados, não ambos."
+                        },
+                        "id": "text",
+                        "css": "col-md-12",
+                        "required": false
+                    },
+                    {
                         "type": "file_select",
                         "placeholder": {
                             "es": "Archivo",
@@ -348,9 +374,9 @@
                             "pr": "Arquivo que será enviado à task. Necessário caso a task precise."
                         },
                         "help": {
-                            "es": "Archivo que se enviará a la task. Requerido si el tipo de task es VOICE o TEXT.",
-                            "en": "File that will be sent to the task. Required if the task type is VOICE or TEXT.",
-                            "pr": "Arquivo que será enviado à task. Necessário se o tipo de task for VOICE ou TEXT."
+                            "es": "Archivo que se enviará a la task. Requerido si el tipo de task es VOICE, TEXT o IMAGE. Opcional si es texto.",
+                            "en": "File that will be sent to the task. Required if the task type is VOICE, TEXT or IMAGE. Optional if it is text",
+                            "pr": "Arquivo que será enviado à task. Necessário se o tipo de task for VOICE, TEXT ou IMAGE. Opcional se for texto"
                         },
                         "id": "file",
                         "css": "col-md-6",

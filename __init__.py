@@ -78,14 +78,14 @@ try:
             start_date = GetParams("start_date")
             end_date = GetParams("end_date")
             result = GetParams("result")
-            text = GetParams("text")
 
             try:
                 range_ = None
                 if start_date and end_date:
                     range_ = [start_date, end_date]
                 
-                res = mod_iaStudio.run_task(task_id, mode, file, range_, text)
+                res = mod_iaStudio.run_task(task_id, mode, file, range_)
+                print(res)
                 if res.get('status') == False:
                     if 'You need to provide afterDate and beforeDate' in res.get('message'):
                         raise Exception("To run this task you must specify the start and end range date.")

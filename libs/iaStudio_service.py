@@ -16,7 +16,6 @@ FILE_TYPES = {
     "mp3": "audio/mpeg",
     "wav": "audio/wav",
     "ogg": "audio/ogg",
-    "oga": "audio/oga",
     "txt": "text/plain",
     "pdf": "application/pdf",
     "jpg": "image/jpeg",
@@ -51,12 +50,12 @@ class IAStudio:
                 })
         return tasks_list
     
-    def run_task(self, task_id, mode, file_path=None, range_=None, text=None):
+    def run_task(self, task_id, mode, file_path=None, range_=None):
         if file_path:
             file_name = file_path.split("/")[-1]
             file_extension = file_name.split(".")[-1].lower()
             if file_extension not in FILE_TYPES:
-                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg, oga for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
+                raise Exception("Invalid file extension. Supported extensions: mp3, wav, ogg for VOICE tasks, txt and pdf for TEXT tasks, jpg, jpeg, png and pdf for IMAGE tasks")
             files=[
                 ('file', (file_name, open(file_path, 'rb'), FILE_TYPES[file_extension]))
             ]
@@ -72,13 +71,25 @@ class IAStudio:
                 data['beforeDate'] = before_date
             except ValueError:
                 raise Exception("Invalid date format. Use dd/mm/yyyy")
-        if text:
-            data['text'] = text
+
         url = self.url + f"api/tasks/run/{task_id}"
         headers = {'Authorization': f"Bearer {self.api_key}"}
         
         response = requests.post(url, headers=headers, data=data, files=files)
-        return response.json()
+        try:
+            return response.json()
+        except Exception:
+            # If it's not a JSON, it's probably an HTML error from the server.
+            error_text = response.text
+            if "<h1>" in error_text and "</h1>" in error_text:
+
+                start = error_text.find('<h1>') + len('<h1>')
+                end = error_text.find('</h1>', start)
+                error_message = error_text[start:end].strip()
+                raise Exception(f"The server returned an error: {error_message}")
+            else:
+                raise Exception(f"The server returned an error: {error_text}")
+
     
     def get_entities(self):
         url = self.url + "api/entities/all"

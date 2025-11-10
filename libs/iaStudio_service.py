@@ -16,6 +16,7 @@ FILE_TYPES = {
     "mp3": "audio/mpeg",
     "wav": "audio/wav",
     "ogg": "audio/ogg",
+    "oga": "audio/oga",
     "txt": "text/plain",
     "pdf": "application/pdf",
     "jpg": "image/jpeg",
@@ -89,7 +90,6 @@ class IAStudio:
                 raise Exception(f"The server returned an error: {error_message}")
             else:
                 raise Exception(f"The server returned an error: {error_text}")
-
     
     def get_entities(self):
         url = self.url + "api/entities/all"

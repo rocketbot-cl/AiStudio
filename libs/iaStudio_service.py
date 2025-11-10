@@ -78,7 +78,20 @@ class IAStudio:
         headers = {'Authorization': f"Bearer {self.api_key}"}
         
         response = requests.post(url, headers=headers, data=data, files=files)
-        return response.json()
+        #return response.json()
+        try:
+            return response.json()
+        except Exception:
+            # If it's not a JSON, it's probably an HTML error from the server.
+            error_text = response.text
+            if "<h1>" in error_text and "</h1>" in error_text:
+
+                start = error_text.find('<h1>') + len('<h1>')
+                end = error_text.find('</h1>', start)
+                error_message = error_text[start:end].strip()
+                raise Exception(f"The server returned an error: {error_message}")
+            else:
+                raise Exception(f"The server returned an error: {error_text}")        
     
     def get_entities(self):
         url = self.url + "api/entities/all"
